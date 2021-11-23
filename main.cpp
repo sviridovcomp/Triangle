@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Triangle.hpp"
+#include "src/Triangle/Triangle.hpp"
 
 int main() {
     using namespace objects;

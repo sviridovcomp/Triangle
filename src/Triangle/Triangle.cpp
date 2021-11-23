@@ -1,5 +1,3 @@
-
-
 #include "Triangle.hpp"
 
 double objects::Triangle::getArea() const {
