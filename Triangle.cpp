@@ -7,3 +7,7 @@ double objects::Triangle::getArea() const {
 
     return std::sqrt(halfPerimeter * (halfPerimeter - _a) * (halfPerimeter - _b) * (halfPerimeter - _c));
 }
+
+uint64_t objects::Triangle::getPerimeter() const {
+    return _a + _b + _c;
+}
