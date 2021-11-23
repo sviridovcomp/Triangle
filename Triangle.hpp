@@ -8,6 +8,8 @@
 #include <cstdlib>
 #include <cstdint>
 #include <cmath>
+#include <array>
+#include <algorithm>
 
 namespace objects {
     enum class SideType {
@@ -25,30 +27,43 @@ namespace objects {
     class Triangle {
     public:
         Triangle() = default;
+
         Triangle(std::size_t a, std::size_t b, std::size_t c)
-            : _a(a), _b(b), _c(c) {};
+                : _a(a), _b(b), _c(c) {
+            _valid = validation();
+        };
 
         double getArea() const;
+
         uint64_t getPerimeter() const;
 
-        size_t getA() const;
-        size_t getB() const;
-        size_t getC() const;
+        [[nodiscard]] size_t getA() const;
 
-        void setA(std::size_t a) const;
-        void setB(std::size_t b) const;
-        void setC(std::size_t c) const;
+        [[nodiscard]] size_t getB() const;
 
-        bool isValid() const;
+        [[nodiscard]] size_t getC() const;
 
-        SideType getTypeBySize() const;
+        void setA(std::size_t a);
 
-        bool operator ==( const Triangle & other ) const ;
-    protected:
+        void setB(std::size_t b);
+
+        void setC(std::size_t c);
+
+        [[nodiscard]] bool isValid() const;
+
+        [[nodiscard]] SideType getTypeBySide() const;
+
+        [[nodiscard]] AngleType getAngleTypeBySide() const;
+
+        bool operator==(const Triangle &other) const;
+
+    private:
         std::size_t _a;
         std::size_t _b;
         std::size_t _c;
-        bool valid{};
+        bool _valid;
+
+        bool validation();
     };
 }
 
